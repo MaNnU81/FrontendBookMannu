@@ -1,1 +1,21 @@
-<p>header works!</p>
+<header class="app-header">
+  <div class="header-left">
+    <mat-icon class="logo-icon">menu_book</mat-icon>
+    <h1 class="logo-text">Library</h1>
+  </div>
+
+  <div class="header-right">
+    <mat-form-field appearance="outline" class="category-filter">
+      <mat-label>Filtra per categoria</mat-label>
+      <mat-select 
+        [ngModel]="bookService.selectedCategoryId()" 
+        (ngModelChange)="onCategoryChange($event)">
+        <mat-option [value]="null">Tutte le categorie</mat-option>
+        <mat-option *ngFor="let category of bookService.categories()" 
+                   [value]="category.id">
+          {{ category.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</header>

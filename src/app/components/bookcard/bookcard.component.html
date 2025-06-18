@@ -1,5 +1,19 @@
-<div class="container">
-    <img src="" alt="">
-    <span>{{bookToDisplay.title}}</span>
-    <span>{{bookToDisplay.author}}</span>   
+<div class="book-container">
+  <!-- Gestione immagine con placeholder -->
+  @if (bookToDisplay.img) {
+    <img [src]="bookToDisplay.img" 
+         [alt]="bookToDisplay.title"
+         class="book-cover">
+  } @else {
+    <div class="cover-placeholder">
+      <img [src]="getBookCover(bookToDisplay.img)" 
+     [alt]="bookToDisplay.title + ' cover'"
+     class="book-cover">
+    </div>
+  }
+  
+  <div class="book-details">
+    <h3 class="title">{{bookToDisplay.title}}</h3>
+    <p class="author">{{bookToDisplay.author}}</p>
+  </div>
 </div>

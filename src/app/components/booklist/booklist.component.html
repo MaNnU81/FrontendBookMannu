@@ -1,6 +1,18 @@
-<div class="container">
-   @for (book of bookServ.books(); track $index) {
-    <app-bookcard [bookToDisplay]="book"/>
-   }
-    
+<div class="booklist-container">
+  @if (bookService.isLoading()) {
+    <mat-spinner diameter="40" class="loading-spinner"></mat-spinner>
+  }
+
+  <div class="books-grid">
+    @if (bookService.books().length > 0) {
+      @for (book of bookService.books(); track book.id) {
+        <app-bookcard [bookToDisplay]="book" class="book-card" />
+      }
+    } @else if (!bookService.isLoading()) {
+      <div class="no-books-message">
+        <mat-icon>menu_book</mat-icon>
+        <p>Nessun libro disponibile</p>
+      </div>
+    }
+  </div>
 </div>

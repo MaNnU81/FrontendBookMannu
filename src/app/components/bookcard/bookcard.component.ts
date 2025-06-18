@@ -9,4 +9,11 @@ import { Book } from '../../model/book';
 })
 export class BookcardComponent {
 @Input({required: true}) bookToDisplay!:Book;
+
+
+  readonly DEFAULT_COVER = 'https://img.drz.lazcdn.com/static/pk/p/3fe9c8a1dbfb5b3910e306183ec5d669.jpg_720x720q80.jpg_.webp';
+
+  getBookCover(imgUrl: string | null): string {
+    return imgUrl || this.DEFAULT_COVER;
+  }
 }
