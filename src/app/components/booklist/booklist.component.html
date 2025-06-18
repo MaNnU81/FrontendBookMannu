@@ -1,0 +1,6 @@
+<div class="container">
+   @for (book of bookServ.books(); track $index) {
+    <app-bookcard [bookToDisplay]="book"/>
+   }
+    
+</div>
